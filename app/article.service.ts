@@ -3,8 +3,6 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/Rx';
 
-import { Article } from './article';
-
 @Injectable()
 export class ArticleService {
     //URL for CRUD operations
@@ -13,7 +11,7 @@ export class ArticleService {
     constructor(private http:HttpClient) { 
     }
     //Fetch all articles
-    getAllArticles(): Observable<Article[]> {
+    getAllArticles(): Observable<any[]> {
         return this.http.get(this.articleUrl)
 	   .map(this.extractData)
 	   .catch(this.handleError);
@@ -27,7 +25,7 @@ export class ArticleService {
                .catch(this.handleError);
     }
     //Fetch article by id
-    getArticleById(articleId: string): Observable<Article> {
+    getArticleById(articleId: string): Observable<any> {
 	console.log(this.articleUrl +"/"+ articleId);
 	return this.http.get(this.articleUrl +"/"+ articleId)
 	   .map(this.extractData)
