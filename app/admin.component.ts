@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from './app.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'admin',
@@ -17,7 +17,7 @@ errorMsg:String = "";
 allArticles: any[];
   
   //Create constructor to get service instance
-  constructor(private articleService: ArticleService) {
+  constructor(private appService: AppService) {
   }
   //Create ngOnInit() and and load articles
   ngOnInit(): void {
@@ -57,7 +57,7 @@ allArticles: any[];
     if(this.value && this.tag && this.details && this.id && duplicateData==true){
       this.error = false;
 
-      this.articleService.deleteArticleById(this.id)
+      this.appService.deleteArticleById(this.id)
       .subscribe(success => {
         this.getAllArticles();
         this.id="";
@@ -94,7 +94,7 @@ allArticles: any[];
                   "id": this.id};
 
       //Create data
-      this.articleService.createArticle(data)
+      this.appService.createArticle(data)
             .subscribe(success => {
               this.getAllArticles();
               this.value="";
@@ -130,7 +130,7 @@ allArticles: any[];
                   "id": this.id};
           
           //Update data              
-          this.articleService.updateArticle(data)
+          this.appService.updateArticle(data)
             .subscribe(success => {
               this.getAllArticles();
               this.value="";
@@ -147,7 +147,7 @@ allArticles: any[];
 
   //Fetch all articles
   getAllArticles() {
-    this.articleService.getAllArticles()
+    this.appService.getAllArticles()
       .subscribe(
       data => this.test(data),
       error => error);
