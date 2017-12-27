@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { ArticleService } from './article.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'search',
@@ -14,7 +14,7 @@ export class SearchComponent  {
   detailInfo:any;
   dataSource:any;
 
-  constructor(private articleService: ArticleService ){
+  constructor(private appService: AppService ){
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class SearchComponent  {
 
     //Fetch all articles
     getAllArticles() {
-      this.articleService.getAllArticles()
+      this.appService.getAllArticles()
         .subscribe(
         data => this.test(data),
         error => error);
