@@ -12,11 +12,11 @@ Steps to configure angular5 application:
 7. npm install -g @angular/cli
 
 8. Go to the path where you want to create your Angular project and type following commands:
-9. ng new my-app
-10. cd my-app
+9. ng new AngularProject
+10. cd AngularProject
 11. ng serve
     
-12. Replace app folder in newly created "my-app" folder with the download code.
+12. Replace "app" folder in newly created "AngularProject" folder with the downloaded "app" folder.
 
 13. Hit http://localhost:4200/ in browser
 
