@@ -1,5 +1,4 @@
 import { Component} from '@angular/core';
-import { SearchDataService } from './search-data.service';
 import { ArticleService } from './article.service';
 
 @Component({
