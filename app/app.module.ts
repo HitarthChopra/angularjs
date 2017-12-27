@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search.component';
 import {AdminComponent} from './admin.component';
 
-import { ArticleService } from './article.service';
+import { AppService } from './app.service';
 
 const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
 {path:'search',component:SearchComponent},{path:'admin',component:AdminComponent}]
@@ -20,7 +20,7 @@ const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
   declarations: [ AppComponent, SearchComponent,
                   AdminComponent ],
   providers: [
-    ArticleService
+    AppService
   ],
   bootstrap:    [ AppComponent ]
 })
