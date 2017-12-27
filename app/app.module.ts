@@ -12,7 +12,6 @@ import {AdminComponent} from './admin.component';
 
 import { ArticleComponent }  from './article.component';
 import { ArticleService } from './article.service';
-import { SearchDataService } from './search-data.service';
 
 const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
 {path:'search',component:SearchComponent},{path:'admin',component:AdminComponent}]
@@ -22,8 +21,7 @@ const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
   declarations: [ AppComponent, SearchComponent,
                   AdminComponent, ArticleComponent ],
   providers: [
-    ArticleService,
-    SearchDataService
+    ArticleService
   ],
   bootstrap:    [ AppComponent ]
 })
