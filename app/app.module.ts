@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search.component';
 import {AdminComponent} from './admin.component';
 
-import { ArticleComponent }  from './article.component';
 import { ArticleService } from './article.service';
 
 const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
@@ -19,7 +18,7 @@ const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
 @NgModule({
   imports:      [ BrowserModule, HttpClientModule, ReactiveFormsModule,                 FormsModule,RouterModule.forRoot(routes) ],
   declarations: [ AppComponent, SearchComponent,
-                  AdminComponent, ArticleComponent ],
+                  AdminComponent ],
   providers: [
     ArticleService
   ],
