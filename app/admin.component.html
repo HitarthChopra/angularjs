@@ -1,1 +1,53 @@
-<app-article></app-article>
+
+<div style="padding-top:20px">
+
+    <div style="padding-top:20px;padding-bottom:20px" *ngIf="error" style="color:red">{{errorMsg}}</div>
+    
+      <table style="width:60%">
+          <tr>
+              <td>
+                  <span style="padding:20px;">
+                      <input placeholder="Search Value" [(ngModel)]="value" type="text" />
+                  </span>
+                  <span style="padding:20px;">
+                      <input placeholder="Search ID" [(ngModel)]="id" type="text" />
+                  </span>
+              </td>
+              <td> 
+                  <button (click)="searchData()">Search</button>
+              </td>
+          </tr>
+
+          <tr>
+            <td>
+                <span style="padding-left:20px;">
+                      <input placeholder="Tag" [(ngModel)]="tag" type="text" />
+                </span>
+            </td>
+            <td>
+                <button (click)="addData()">Add</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span style="padding:20px;">
+                    <textarea rows="4" cols="50" placeholder="Details" 
+                              [(ngModel)]="details" >
+                    </textarea> 
+              </span>
+            </td>
+
+            <td>
+                <button (click)="updateData()">Update</button>
+                <button style="display: block;" (click)="deleteArticle()">Delete</button>
+            </td>
+          </tr>
+</table>
+
+  <div style="padding-top:20px;" 
+        *ngFor="let result of searchResults">
+    <div style="color:blue;text-decoration:underline; cursor:pointer;"          (click)="displayDetails(result)">{{result.title}}</div>
+    <div style="color:blue;">{{result.highlights}}</div>
+  </div>
+</div>
