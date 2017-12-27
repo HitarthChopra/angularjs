@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import{Routes,RouterModule} from '@angular/router';
@@ -16,7 +15,7 @@ const routes:Routes=[{path:'',redirectTo:'/search',pathMatch:'full'},
 {path:'search',component:SearchComponent},{path:'admin',component:AdminComponent}]
 
 @NgModule({
-  imports:      [ BrowserModule, HttpClientModule, ReactiveFormsModule,                 FormsModule,RouterModule.forRoot(routes) ],
+  imports:      [ BrowserModule, HttpClientModule, FormsModule,RouterModule.forRoot(routes) ],
   declarations: [ AppComponent, SearchComponent,
                   AdminComponent ],
   providers: [
