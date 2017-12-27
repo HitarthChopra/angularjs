@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/Rx';
 
 @Injectable()
-export class ArticleService {
+export class AppService {
     //URL for CRUD operations
     articleUrl = "http://localhost:3000/data";
     //Create constructor to get Http instance
