@@ -149,10 +149,10 @@ allArticles: any[];
   getAllArticles() {
     this.appService.getAllArticles()
       .subscribe(
-      data => this.test(data),
+      data => this.assignData(data),
       error => error);
   }
-  test(data: any) {
+  assignData(data: any) {
     this.allArticles = data;
   }
 
