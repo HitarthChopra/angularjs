@@ -8,7 +8,7 @@ Steps to configure angular5 application:
     
 5. Hit url http://localhost:3000/data on browser. You will be able to see the data
 
-6. Install angular cli using following commands in command prompt:
+6. Open another command prompt window to install angular cli using following commands:
 7. npm install -g @angular/cli
 8. ng new my-app
 9. cd my-app
