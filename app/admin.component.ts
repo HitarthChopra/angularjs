@@ -104,13 +104,13 @@ successMsg: String = "";
     var duplicateData = false;
 
     for (var i = 0; i < this.allArticles.length; i++) {
-      if ((this.allArticles[i].title == this.value) || (this.allArticles[i].id == this.id)) {
+      if ((this.allArticles[i].title == this.value)) {
         duplicateData = true;
         break;
       }
     }
 
-    if (this.value && this.tag && this.details && this.id && duplicateData != true) {
+    if (this.value && this.tag && this.details && duplicateData != true) {
       this.error = false;
       this.success = false;
       let data = {
@@ -118,7 +118,7 @@ successMsg: String = "";
         "tags": this.tag.split(","),
         "highlights": "",
         "detail": this.details,
-        "id": this.id
+        "id": this.allArticles.length + 1
       };
 
       //Create data
@@ -136,7 +136,7 @@ successMsg: String = "";
     } else {
       this.success = false;
       this.error = true;
-      this.errorMsg = "All fields are mandatory to add data. Search Value and ID should be unique."
+      this.errorMsg = "All fields are mandatory to add data. Search Value should be unique."
     }
 
   }
