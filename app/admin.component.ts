@@ -17,6 +17,7 @@ errorMsg:String = "";
 allArticles: any[];
 success: boolean = false;
 successMsg: String = "";
+access:any;
   
   //Create constructor to get service instance
   constructor(private appService: AppService) {
@@ -24,8 +25,16 @@ successMsg: String = "";
   //Create ngOnInit() and and load articles
   ngOnInit(): void {
     this.getAllArticles();
+    this.getAccess();
   }
 
+ getAccess(){
+    this.appService.getAccess()
+      .subscribe(
+      data => this.access = data.access,
+      error => error);
+ }
+  
  searchData() {
 
     if (this.value) {
