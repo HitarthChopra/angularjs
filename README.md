@@ -20,4 +20,7 @@ Steps to configure angular5 application:
 
 13. Hit http://localhost:4200/ in browser
 
+14. To test access validation for Admin page, change "accessLevel" variable value in db.json file to "Admin" for successful access and any other value for unauthorized access.
+
+
     
