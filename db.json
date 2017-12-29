@@ -36,6 +36,20 @@
 			"highlights": "An Angular Module (NgModule) class describes how the application parts fit together. Every application has at least one Angular Module, the root module that you bootstrap to launch the application.",
 			"detail": "You launch the application by bootstrapping the root AppModule. Among other things, the bootstrapping process creates the component(s) listed in the bootstrap array and inserts each one into the browser DOM.Each bootstrapped component is the base of its own tree of components. Inserting a bootstrapped component usually triggers a cascade of component creations that fill out that tree.",
 			"id": 5
+		},
+		{
+			"title": "Dependency Injection",
+			"tags": ["Dependency", "Injection"],
+			"highlights": "Dependency injection is an important application design pattern. It's used so widely that almost everyone just calls it DI.",
+			"detail": "Dependency Injection (DI) is a way to create objects that depend upon other objects. A Dependency Injection system supplies the dependent objects (called the dependencies) when it creates an instance of an object.",
+			"id": 6
+		},
+		{
+			"title": "Testing",
+			"tags": ["Testing"],
+			"highlights": "This guide offers tips and techniques for testing Angular applications. Though this page includes some general testing principles and techniques, the focus is on testing applications written with Angular.",
+			"detail": "You can test components in isolation as well. However, isolated unit tests don't reveal how components interact with Angular. In particular, they can't reveal how a component class interacts with its own template or with other components.",
+			"id": 7
 		}
 	]
 }
