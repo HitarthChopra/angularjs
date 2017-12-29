@@ -26,18 +26,19 @@ allArticles: any[];
 
   searchData() {
 
-    if(this.value && this.id){
+    if(this.value){
       this.error = false;
       for(var i=0;i<this.allArticles.length;i++){
-        if(this.value==this.allArticles[i].title && this.id==this.allArticles[i].id){
+        if(this.value.toLowerCase()==this.allArticles[i].title.toLowerCase()){
           this.tag=this.allArticles[i].tags;
           this.details=this.allArticles[i].detail;
+          this.id = this.allArticles[i].id;
           break;
         }
       }
     } else {
       this.error = true;
-      this.errorMsg = "Enter Search Value and Search ID to search data."
+      this.errorMsg = "Enter Search Value to search data."
     }
 
   }
