@@ -26,20 +26,30 @@ allArticles: any[];
 
   searchData() {
 
-    if(this.value){
+    if (this.value) {
       this.error = false;
-      for(var i=0;i<this.allArticles.length;i++){
-        if(this.value.toLowerCase()==this.allArticles[i].title.toLowerCase()){
-          this.tag=this.allArticles[i].tags;
-          this.details=this.allArticles[i].detail;
+      var dataFlag=false;
+      for (var i = 0; i < this.allArticles.length; i++) {
+        if (this.value.toLowerCase() == this.allArticles[i].title.toLowerCase()) {
+          this.tag = this.allArticles[i].tags;
+          this.details = this.allArticles[i].detail;
           this.id = this.allArticles[i].id;
+          dataFlag = true;
           break;
         }
       }
-    } else {
+      if(!dataFlag){
+        this.error = true;
+        this.errorMsg = "No data found.";
+        this.tag = "";
+          this.details = "";
+          this.id = "";
+      }
+    } else if(!this.value) {
       this.error = true;
-      this.errorMsg = "Enter Search Value to search data."
+      this.errorMsg = "Enter Search Value to search data.";
     }
+    
 
   }
 
