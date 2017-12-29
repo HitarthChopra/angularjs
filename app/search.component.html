@@ -2,7 +2,7 @@
   
     <div style="padding-bottom:20px;">Search <input type="text" (input)="searchChange($event.target.value);" [(ngModel)]="searchValue" /></div>
   
-  <div *ngIf="displayOutput && searchValue && searchResults.length>0" style="padding:20px; border:solid 1px;">Search Results:
+  <div *ngIf="displayOutput && searchValue && searchResults.length>0" style="padding:20px; border:solid 1px;max-height:330px;overflow-y:auto;">Search Results:
     <div style="padding-top:20px;" *ngFor="let result of searchResults">
       <div style="color:blue;text-decoration:underline; cursor:pointer;" (click)="displayDetails(result)">{{result.title}}</div>
       <div style="color:blue;">{{result.highlights}}</div>
