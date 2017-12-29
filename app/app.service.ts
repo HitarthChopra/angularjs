@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 export class AppService {
     //URL for CRUD operations
     articleUrl = "http://localhost:3000/data";
+    accessURL = "http://localhost:3000/accessLevel";
     //Create constructor to get Http instance
     constructor(private http:HttpClient) { 
     }
@@ -17,6 +18,15 @@ export class AppService {
 	   .catch(this.handleError);
 
     }
+	
+    //Fetch access level
+    getAccess(): Observable<any[]> {
+        return this.http.get(this.accessURL)
+	   .map(this.extractData)
+	   .catch(this.handleError);
+
+    }
+	
     //Create article
     createArticle(article: any):Observable<number> {
 	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
