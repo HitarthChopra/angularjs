@@ -55,6 +55,10 @@ successMsg: String = "";
     } else if(!this.value) {
       this.success = false;
       this.error = true;
+      this.id = "";
+      this.value = "";
+      this.tag = "";
+      this.details = "";
       this.errorMsg = "Enter Search Value to search data.";
     }
   }
