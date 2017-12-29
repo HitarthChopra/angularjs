@@ -13,6 +13,7 @@ export class SearchComponent  {
   displayDetailInfo:boolean=false;
   detailInfo:any;
   dataSource:any;
+  searchValue:any;
 
   constructor(private appService: AppService ){
   }
@@ -33,17 +34,19 @@ export class SearchComponent  {
     }
 
   searchChange(value:any){
-    //make service call here
-    console.log(value);
     this.searchResults=[];
     this.displayDetailInfo=false;
     this.displayOutput=true;
-    //console.log(this.dataSource.length);
-    for(var i=0;i<this.dataSource.length;i++){
-      if((this.dataSource[i].title.toLowerCase()).indexOf((value.toLowerCase())) >= 0){
-        //console.log(this.dataSource[i].title.indexOf(value));
+    
+        for(var i=0;i<this.dataSource.length;i++){
+      if((this.dataSource[i].title.toLowerCase()).indexOf((value.toLowerCase())) >= 0 || (this.dataSource[i].highlights.toLowerCase()).indexOf((value.toLowerCase())) >= 0 || (this.dataSource[i].detail.toLowerCase()).indexOf((value.toLowerCase())) >= 0){
         this.searchResults.push(this.dataSource[i]);
-        
+      }
+      for(var j=0;j<this.dataSource[i].tags.length;j++)
+      {
+        if((this.dataSource[i].tags[j].toLowerCase()).indexOf((value.toLowerCase())) >= 0 && this.searchResults.indexOf(this.dataSource[i])<0){
+this.searchResults.push(this.dataSource[i]);
+        }
       }
     }
     
