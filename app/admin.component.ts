@@ -15,6 +15,8 @@ details:any;
 error:boolean = false;
 errorMsg:String = "";
 allArticles: any[];
+success: boolean = false;
+successMsg: String = "";
   
   //Create constructor to get service instance
   constructor(private appService: AppService) {
@@ -24,10 +26,11 @@ allArticles: any[];
     this.getAllArticles();
   }
 
-  searchData() {
+ searchData() {
 
     if (this.value) {
       this.error = false;
+      this.success = false;
       var dataFlag=false;
       for (var i = 0; i < this.allArticles.length; i++) {
         if (this.value.toLowerCase() == this.allArticles[i].title.toLowerCase()) {
@@ -35,6 +38,8 @@ allArticles: any[];
           this.details = this.allArticles[i].detail;
           this.id = this.allArticles[i].id;
           dataFlag = true;
+          this.success = true;
+          this.successMsg = "Data searched successfully.";
           break;
         }
       }
@@ -46,11 +51,10 @@ allArticles: any[];
           this.id = "";
       }
     } else if(!this.value) {
+      this.success = false;
       this.error = true;
       this.errorMsg = "Enter Search Value to search data.";
     }
-    
-
   }
 
   //Delete article
