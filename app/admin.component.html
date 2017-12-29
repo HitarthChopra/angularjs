@@ -1,6 +1,6 @@
 
 <div *ngIf="access!='Admin'" style="padding-top:20px;color:red">
-    You are not authorized to access this page
+    {{accessMsg}}
 </div>
 <div *ngIf="access=='Admin'" style="padding-top:20px">
 

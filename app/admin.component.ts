@@ -18,21 +18,28 @@ allArticles: any[];
 success: boolean = false;
 successMsg: String = "";
 access:any;
+accessMsg: String = "";
   
   //Create constructor to get service instance
   constructor(private appService: AppService) {
   }
   //Create ngOnInit() and and load articles
   ngOnInit(): void {
-    this.getAllArticles();
     this.getAccess();
+    this.getAllArticles();   
   }
 
  getAccess(){
     this.appService.getAccess()
       .subscribe(
-      data => this.access = data.accessLevel,
+      data => this.assignRole(data),
       error => error);
+ }
+
+ assignRole(data: any) {
+  this.access = data.role;
+  if(this.access.toLowerCase()!='admin')
+      this.accessMsg = "You are not authorized to access this page.";
  }
   
  searchData() {
@@ -88,7 +95,7 @@ access:any;
       this.error = false;
       this.success = false;
 
-      this.articleService.deleteArticleById(this.id)
+      this.appService.deleteArticleById(this.id)
         .subscribe(success => {
           this.getAllArticles();
           this.id = "";
@@ -131,7 +138,7 @@ access:any;
       };
 
       //Create data
-      this.articleService.createArticle(data)
+      this.appService.createArticle(data)
         .subscribe(success => {
           this.getAllArticles();
           this.value = "";
@@ -172,7 +179,7 @@ updateData() {
       };
 
       //Update data              
-      this.articleService.updateArticle(data)
+      this.appService.updateArticle(data)
         .subscribe(success => {
           this.getAllArticles();
           this.value = "";
