@@ -1,5 +1,8 @@
 
-<div style="padding-top:20px">
+<div *ngIf="access!='Admin'" style="padding-top:20px;color:red">
+    You are not authorized to access this page
+</div>
+<div *ngIf="access=='Admin'" style="padding-top:20px">
 
     <div style="padding-top:20px;padding-bottom:20px" *ngIf="error" style="color:red">{{errorMsg}}</div>
     <div style="padding-top:20px;padding-bottom:20px" *ngIf="success" style="color:green">{{successMsg}}</div>
