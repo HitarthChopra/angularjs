@@ -31,7 +31,7 @@ access:any;
  getAccess(){
     this.appService.getAccess()
       .subscribe(
-      data => this.access = data.access,
+      data => this.access = data.accessLevel,
       error => error);
  }
   
