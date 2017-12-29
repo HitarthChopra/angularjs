@@ -40,10 +40,12 @@ successMsg: String = "";
           dataFlag = true;
           this.success = true;
           this.successMsg = "Data searched successfully.";
+          this.error = false;
           break;
         }
       }
       if(!dataFlag){
+        this.success = false;
         this.error = true;
         this.errorMsg = "No data found.";
         this.tag = "";
@@ -62,28 +64,33 @@ successMsg: String = "";
 
     var duplicateData = false;
 
-    for(var i=0;i<this.allArticles.length;i++){
-      if((this.allArticles[i].title==this.value) || (this.allArticles[i].id==this.id)){
+    for (var i = 0; i < this.allArticles.length; i++) {
+      if ((this.allArticles[i].title == this.value) || (this.allArticles[i].id == this.id)) {
         duplicateData = true;
         break;
       }
     }
 
-    if(this.value && this.tag && this.details && this.id && duplicateData==true){
+    if (this.value && this.tag && this.details && this.id && duplicateData == true) {
       this.error = false;
+      this.success = false;
 
-      this.appService.deleteArticleById(this.id)
-      .subscribe(success => {
-        this.getAllArticles();
-        this.id="";
-        this.value="";
-        this.tag="";
-        this.details="";
-      },
-      error => error);
+      this.articleService.deleteArticleById(this.id)
+        .subscribe(success => {
+          this.getAllArticles();
+          this.id = "";
+          this.value = "";
+          this.tag = "";
+          this.details = "";
+         this.error = false;
+          this.success = true;
+          this.successMsg = "Data deleted successfully.";
+        },
+        error => error);
     } else {
+      this.success = false;
       this.error = true;
-      this.errorMsg = "Only existing data can be deleted."
+      this.errorMsg = "Only existing data can be deleted.";
     }
 
   }
@@ -92,74 +99,84 @@ successMsg: String = "";
 
     var duplicateData = false;
 
-    for(var i=0;i<this.allArticles.length;i++){
-      if((this.allArticles[i].title==this.value) || (this.allArticles[i].id==this.id)){
+    for (var i = 0; i < this.allArticles.length; i++) {
+      if ((this.allArticles[i].title == this.value) || (this.allArticles[i].id == this.id)) {
         duplicateData = true;
         break;
       }
     }
 
-    if(this.value && this.tag && this.details && this.id && duplicateData!=true){
+    if (this.value && this.tag && this.details && this.id && duplicateData != true) {
       this.error = false;
-
-      let data = {"title": this.value,
-                  "tags": this.tag.split(","),
-                  "highlights": "",
-                  "detail": this.details,
-                  "id": this.id};
+      this.success = false;
+      let data = {
+        "title": this.value,
+        "tags": this.tag.split(","),
+        "highlights": "",
+        "detail": this.details,
+        "id": this.id
+      };
 
       //Create data
-      this.appService.createArticle(data)
-            .subscribe(success => {
-              this.getAllArticles();
-              this.value="";
-              this.tag="";
-              this.details="";
-              this.id="";  
-            }, error => error);
-    } else{
+      this.articleService.createArticle(data)
+        .subscribe(success => {
+          this.getAllArticles();
+          this.value = "";
+          this.tag = "";
+          this.details = "";
+          this.id = "";
+         this.error = false;
+          this.success = true;
+          this.successMsg = "Data added successfully.";
+        }, error => error);
+    } else {
+      this.success = false;
       this.error = true;
       this.errorMsg = "All fields are mandatory to add data. Search Value and ID should be unique."
     }
-      
-  }
 
-  updateData() {
+  }
+updateData() {
 
     var duplicateData = false;
 
-    for(var i=0;i<this.allArticles.length;i++){
-      if((this.allArticles[i].title==this.value) || (this.allArticles[i].id==this.id)){
+    for (var i = 0; i < this.allArticles.length; i++) {
+      if ((this.allArticles[i].title == this.value) || (this.allArticles[i].id == this.id)) {
         duplicateData = true;
         break;
       }
     }
-    
-    if(this.value && this.tag && this.details && this.id && duplicateData==true){
-      this.error = false;
 
-      let data = {"title": this.value,
-                  "tags": this.tag,
-                  "highlights": "",
-                  "detail": this.details,
-                  "id": this.id};
-          
-          //Update data              
-          this.appService.updateArticle(data)
-            .subscribe(success => {
-              this.getAllArticles();
-              this.value="";
-              this.tag="";
-              this.details="";
-              this.id="";
-            }, error => error);
+    if (this.value && this.tag && this.details && this.id && duplicateData == true) {
+      this.error = false;
+      this.success = false;
+      let data = {
+        "title": this.value,
+        "tags": this.tag,
+        "highlights": "",
+        "detail": this.details,
+        "id": this.id
+      };
+
+      //Update data              
+      this.articleService.updateArticle(data)
+        .subscribe(success => {
+          this.getAllArticles();
+          this.value = "";
+          this.tag = "";
+          this.details = "";
+          this.id = "";
+         this.error = false;
+          this.success = true;
+          this.successMsg = "Data updated successfully.";
+        }, error => error);
     } else {
+      this.success = false;
       this.error = true;
       this.errorMsg = "All fields are mandatory to update data. Only existing data can be updated."
     }
 
   }
-
   //Fetch all articles
   getAllArticles() {
     this.appService.getAllArticles()
