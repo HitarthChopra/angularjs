@@ -1,4 +1,9 @@
 {
+  "accessLevel": "Admin"
+}
+
+
+{
   "data": [
     {
       "title": "Angular",
