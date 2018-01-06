@@ -1,8 +1,25 @@
+<div *ngIf="!displayScreen" style="padding-top:20px">
 
-<div *ngIf="access!='Admin'" style="padding-top:20px;color:red">
-    {{accessMsg}}
+    <div style="padding-top:20px;padding-bottom:20px" *ngIf="accessFlag" style="color:red">{{accessMsg}}</div>
+
+    <table style="width:60%">
+        <tr>
+            <td>
+                <span style="padding:20px;">
+                    <input placeholder="Enter Username" [(ngModel)]="username" type="text" />
+                </span>
+                <span style="padding:20px;">
+                    <input placeholder="Enter Password" [(ngModel)]="password" type="password" />
+                </span>
+            </td>
+            <td> 
+                <button (click)="validate()">Log In</button>
+            </td>
+        </tr>
+    </table>
 </div>
-<div *ngIf="access=='Admin'" style="padding-top:20px">
+
+<div *ngIf="displayScreen" style="padding-top:20px">
 
     <div style="padding-top:20px;padding-bottom:20px" *ngIf="error" style="color:red">{{errorMsg}}</div>
     <div style="padding-top:20px;padding-bottom:20px" *ngIf="success" style="color:green">{{successMsg}}</div>

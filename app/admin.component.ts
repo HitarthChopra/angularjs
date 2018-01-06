@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 })
 export class AdminComponent implements OnInit {
 
+username:any;
+password:any;
 value:any;
 id:any;
 tag:any;
@@ -17,31 +19,38 @@ errorMsg:String = "";
 allArticles: any[];
 success: boolean = false;
 successMsg: String = "";
-access:any;
-accessMsg: String = "";
+displayScreen:boolean = false;
+accessFlag:boolean = false;
+accessMsg:any;
   
   //Create constructor to get service instance
   constructor(private appService: AppService) {
   }
   //Create ngOnInit() and and load articles
   ngOnInit(): void {
-    this.getAccess();
     this.getAllArticles();   
   }
-
- getAccess(){
-    this.appService.getAccess()
-      .subscribe(
-      data => this.assignRole(data),
-      error => error);
- }
-
- assignRole(data: any) {
-  this.access = data.role;
-  if(this.access.toLowerCase()!='admin')
-      this.accessMsg = "You are not authorized to access this page.";
- }
   
+  validate() {
+    if(this.username && this.password){
+      if(this.username.toLowerCase()=='admin' && this.password=='password'){
+        this.displayScreen = true;
+      } else {
+        this.accessFlag = true;
+        this.displayScreen = false;
+        this.accessMsg = "Invalid credentials. You are not authorized to access this page.";
+        this.username = "";
+        this.password = "";
+      }
+    } else {
+        this.accessFlag = true;
+        this.displayScreen = false;
+        this.accessMsg = "Username and password are mandatory to login.";
+        this.username = "";
+        this.password = "";
+    }
+  }
+
  searchData() {
 
     if (this.value) {
