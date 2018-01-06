@@ -7,7 +7,6 @@ Steps to configure angular5 application:
 4. json-server --watch db.json 
     
 5. Hit url http://localhost:3000/data on browser. You will be able to see the data.
-6. Hit url http://localhost:3000/accessLevel on browser. You will be able to see the access levels.
 
 6. Open another command prompt window to install angular cli using following commands:
 7. npm install -g @angular/cli
@@ -21,7 +20,7 @@ Steps to configure angular5 application:
 
 13. Hit http://localhost:4200/ in browser.
 
-14. To test access validation for Admin page, change "accessLevel" object value in db.json file to "Admin" for successful access and any other value for unauthorized access.
+14. To test screen validation for Admin page, enter Username as "admin" and Password as "password" for successful access and any other value for unauthorized access.
 
 
     
