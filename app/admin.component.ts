@@ -181,7 +181,7 @@ updateData() {
       this.success = false;
       let data = {
         "title": this.value,
-        "tags": this.tag,
+        "tags": this.tag.split(","),
         "highlights": "",
         "detail": this.details,
         "id": this.id
